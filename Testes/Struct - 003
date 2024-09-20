@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string>
+#include <iostream> //bibliote c++
+#include <new>
+
+ using namespace std;
+
+//struct para nome de frutas
+struct fruta{
+    string cor;
+    string nome;
+};
+
+
+int main () {
+
+    //criando um ponteiro para o struct criando
+    fruta *primeiraFruta = new fruta;
+
+    //modificando valores
+    primeiraFruta->cor = "Amarela";
+    primeiraFruta->nome = "Banana";
+
+    //Exibindo valores
+    cout << "Fruta:" << primeiraFruta->nome << ", Cor:" << primeiraFruta->cor;
+    cout << "\n===============================";
+    //criando uma lista de frutas
+    fruta *ponteiroListaDeFrutas = new fruta[2];
+
+    //modificando falores
+    ponteiroListaDeFrutas[0].cor = "Vermelho";
+    ponteiroListaDeFrutas[0].nome = "Morango";
+    ponteiroListaDeFrutas[1].cor = "Verde";
+    ponteiroListaDeFrutas[1].nome= "Kiwi";
+
+    //percorendo e exibindo
+    int i;
+    for(i=0; i<2; i++){
+        cout << "\nFruta:" << ponteiroListaDeFrutas[i].nome << ", Cor:" << ponteiroListaDeFrutas[i].cor;
+    }
+    cout << "\n===============================";
+    return 0;
+}
