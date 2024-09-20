@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+//A função Typedef struct e uma forma de resumir a escrita
+//na hora que ela for chamada
+typedef struct Data{
+    int dia;
+    int mes;
+    int ano;
+}Data;
+
+struct Aluno{
+    int matricola;
+    Data nascimento;
+};
+
+int main () {
+
+    //criando um aluno
+    struct Aluno aluno1;
+
+    //modificando valor
+    aluno1.matricola = 9982;
+    aluno1.nascimento.ano = 2004;
+    aluno1.nascimento.mes = 02;
+    aluno1.nascimento.dia = 10;
+
+    //imprimindo os valores
+    printf("Num da matricola: %d\n", aluno1.matricola);
+    printf("Nascido em: %d/%d/%d", aluno1.nascimento.dia, aluno1.nascimento.mes, aluno1.nascimento.ano);
+
+    return 0;
+}
