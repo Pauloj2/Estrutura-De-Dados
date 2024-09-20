@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h>
+
+struct palavra{
+
+    int ordem;
+    char letra;
+    char texto[255];
+};
+
+int main () {
+
+    //criando uma palavra, "modificando somente uma vez a variavel;
+    struct palavra primeiraPalavra;
+
+    //modifincado os capos "variaveis do struct" dando valores.
+    primeiraPalavra.ordem = 10;
+    primeiraPalavra.letra = 'p';
+    strcpy(primeiraPalavra.texto,"palavrinha");
+
+    //imprimindo mostrando valores do structs
+    printf("Ordem: %d\n", primeiraPalavra.ordem);
+    printf("Primeira Letra: %c\n", primeiraPalavra.letra);
+    printf("Palavra: %s\n", primeiraPalavra.texto);
+    printf("=================================\n");
+    
+    //Fazendo uma lista de Structs
+    struct palavra listaDePalavras[3];
+
+    listaDePalavras[0].ordem = 0;
+    listaDePalavras[1].ordem = 1;
+    listaDePalavras[2].ordem = 2;
+
+    listaDePalavras[0].letra = 'a';
+    listaDePalavras[1].letra = 'b';
+    listaDePalavras[2].letra = 'c';
+
+    strcpy(listaDePalavras[0].texto,"abacaxi");
+    strcpy(listaDePalavras[1].texto,"banana");
+    strcpy(listaDePalavras[2].texto,"cereja");
+
+    //Percorendo o vetor e imprimindo os valores
+    int i;
+    for(i=0; i<3; i++){
+        printf("Ordem: %d\n", listaDePalavras[i].ordem);
+        printf("Primeira Letra: %c\n", listaDePalavras[i].letra);
+        printf("Palavra: %s\n", listaDePalavras[i].texto);
+        printf("=================================\n");
+    }
+
+    return 0;
+}
