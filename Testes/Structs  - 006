@@ -1,0 +1,91 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+
+typedef struct tpEndereco{
+    char rua[40];
+    int numero;
+    char bairro[40];
+    char cidade[40];
+    char estado[3];
+    int cep;
+}tpEndereco;
+
+typedef struct tpDataNascimento{
+    int dia;
+    int mes;
+    int ano;
+}tpDataNascimento;
+
+struct cadasdroCliente{
+    char nome[40];
+    int telefone;
+
+    tpEndereco endereco;
+
+    tpDataNascimento dataNascimento;
+
+}cadasdroCliente[2];
+
+int main () {
+    int i;
+
+    printf("\n\n==== Cadastro dos clientes ====\n\n");
+
+    for(i=0; i<2; i++){
+        printf("\n\nNome do cliente: ");
+        fflush(stdin);
+        gets(cadasdroCliente[i].nome);
+
+        printf("\nDigite o telefone do cliente: ");
+        scanf("%d", &cadasdroCliente[i].telefone);
+
+        printf("\nDigite o nome da rua: ");
+        fflush(stdin);
+        gets(cadasdroCliente[i].endereco.rua);
+
+        printf("\nDigite o numero da casa:  ");
+        scanf("%d", &cadasdroCliente[i].endereco.numero);
+
+        printf("\nDigite o nome do bairro:  ");
+        fflush(stdin);
+        gets(cadasdroCliente[i].endereco.bairro);
+
+        printf("\nDigite o nome da cidade:  ");
+        fflush(stdin);
+        gets(cadasdroCliente[i].endereco.cidade);
+
+        printf("\nDigite a sigla do estado:  ");
+        fflush(stdin);
+        gets(cadasdroCliente[i].endereco.estado);
+
+        printf("\nDigite o numero do cep:  ");
+        scanf("%d", &cadasdroCliente[i].endereco.cep);
+
+        printf("\nDigite o dia de nascimento:  ");
+        scanf("%d", &cadasdroCliente[i].dataNascimento.dia);
+
+        printf("\nDigite o mes de nascimento:  ");
+        scanf("%d", &cadasdroCliente[i].dataNascimento.mes);
+
+        printf("\nDigite o ano de nascimento:  ");
+        scanf("%d", &cadasdroCliente[i].dataNascimento.ano);
+
+    }
+    for(i=0; i<2; i++){
+        printf("\n Nome: %s", cadasdroCliente[i].nome);
+        printf("\n Rua: %d", cadasdroCliente[i].telefone);
+        printf("\n Numero: %d", cadasdroCliente[i].endereco.numero);
+        printf("\n Bairro: %s", cadasdroCliente[i].endereco.bairro);
+        printf("\n Cidade: %s", cadasdroCliente[i].endereco.cidade);
+        printf("\n Estado: %s", cadasdroCliente[i].endereco.estado);
+        printf("\n Cep: %d", cadasdroCliente[i].endereco.cep);
+
+        printf("\n Dia de nascimento:..  %d", cadasdroCliente[i].dataNascimento.dia);
+        printf("\n Mes de nascimento:..  %d", cadasdroCliente[i].dataNascimento.mes);
+        printf("\n Ano de nascimento:..  %d", cadasdroCliente[i].dataNascimento.ano);
+    }
+
+    return 0;
+}
