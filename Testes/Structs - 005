@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+//========================
+struct fichaAluno{
+    string nome;
+    int numero;
+    float nota;
+
+};
+//========================
+
+int main () {
+
+    fichaAluno aluno;
+
+    cout << "\n===== Cadastro De Aluno =====\n\n";
+    cout << "Nome do Aluno....:";
+    getline(cin, aluno.nome);
+
+    cout << "Digite o numero do aluno:";
+    cin >> aluno.numero;
+
+    cout << "Digite a nota do aluno: ";
+    cin >> aluno.nota;
+
+    cout << "\n===== Lendo Os Dados Da Struct =====\n\n";
+    cout << "Nome: " << aluno.nome << endl;
+    cout << "Matricola: " << aluno.numero << endl;
+    cout << "Nota:  " << fixed << setprecision(1) << aluno.nota <<endl;
+
+    return 0;
+}
