@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+//========================
+typedef struct fichaAluno{
+    char nome[40];
+    int numero;
+    float nota;
+
+}fichaAluno;
+//========================
+
+int main () {
+
+    fichaAluno aluno;
+
+    printf("\n===== Cadastro De Aluno =====\n\n");
+    printf("Nome do Aluno....:");
+    fgets(aluno.nome, 40, stdin);
+
+    printf("Digite o numero do aluno:");
+    scanf("%d", &aluno.numero);
+
+    printf("Digite a nota do aluno: ");
+    scanf("%lf", &aluno.nota);
+
+    printf("\n===== Lendo Os Dados Da Struct =====\n\n");
+    printf("Nome:  %s", aluno.nome);
+    printf("Matricola:  %d\n", aluno.numero);
+    printf("Nota:  %.1lf\n", aluno.nota);
+    return 0;
+}
