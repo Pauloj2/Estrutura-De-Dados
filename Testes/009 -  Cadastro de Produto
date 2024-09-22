@@ -1,0 +1,39 @@
+//Cadastro de Produto:
+//Crie uma struct chamada Produto, que contenha nome, código e preço.
+//Faça um programa que leia os dados de 3 produtos, armazene-os em um
+//array e depois exiba os dados desses produtos.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct tpProduto{
+    char nome[50];
+    int codigo;
+    float valor;
+}tpProduto;
+
+int main () {
+    tpProduto produto[3];
+    int i;
+
+    for(i=0; i<3; i++){
+        printf("Digite o Nome do produto -> ");
+        fflush(stdin);
+        fgets(produto[i].nome, 50,  stdin);
+
+        printf("Digite numero do codigo -> ");
+        scanf("%d", &produto[i].codigo);
+
+        printf("Digite o valor -> ");
+        scanf("%f", &produto[i].valor);
+    }
+    for(i=0; i<3; i++){
+        printf("\n====== Dados Do Produto =====\n");
+        printf("    Nome:  %s", produto[i].nome);
+        printf("    Codigo:  %d\n", produto[i].codigo);
+        printf("    Valor:  %.2f\n", produto[i].valor);
+        printf("=============================\n");
+    }
+
+    return 0;
+}
