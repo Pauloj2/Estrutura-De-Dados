@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+typedef struct pessoa{
+    char nome[50];
+    int idade;
+    float altura;
+}pessoa;
+
+void lerdados(pessoa *a) {
+    printf("Digite o nome da pessoa: ");
+    fgets(a->nome, 50, stdin);
+
+    printf("Digite a idade: ");
+    scanf("%d", &a->idade);
+
+    printf("Digite a altura: ");
+    scanf("%f", &a->altura);
+}
+
+void imprimirdados(pessoa a){
+    printf("\n==== Dados Pessoais ====\n");
+    printf("Nome: %s", a.nome);
+    printf("Idade: %d\n", a.idade);
+    printf("Altura: %.2f metros\n", a.altura);
+    printf("=========================\n");
+
+}
+int main () {
+    pessoa a;
+
+    lerdados(&a);
+
+    imprimirdados(a);
+
+    return 0;
+}
