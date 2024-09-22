@@ -1,0 +1,49 @@
+//Crie uma struct chamada Aluno, que contenha nome,
+//número de matrícula e 3 notas.
+//Faça um programa que leia os dados de 5 alunos e calcule
+//a média das notas de cada aluno, exibindo o resultado.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct tpAluno{
+    char nome[50];
+    int matricola;
+    float nota[3];
+}tpAluno;
+
+
+int main () {
+    tpAluno aluno[5];
+    float media;
+    for(int i=0; i<5; i++){
+        printf("Digite o nome do aluno: ");
+        getchar();
+        fgets(aluno[i].nome, 50, stdin),
+
+        printf("Digite o numero da matricola:");
+        scanf("%d", &aluno[i].matricola);
+
+        printf("digite as notas do aluno: \n");
+        for(int j=0; j<3; j++){
+            printf("Nota %d:", j+1);
+            scanf("%f", &aluno[i].nota[j]);
+        }
+        printf("\n");
+
+    }
+    printf("=== Dados dos Alunos ===\n");
+    for(int i=0; i<5; i++){
+        printf("Aluno %d:\n", i+1);
+        printf("Nome: %s", aluno[i].nome);
+        printf("Matricola: %d\n", aluno[i].matricola);
+
+        for(int j=0; j<3; j++){
+            media+= aluno[i].nota[j];
+        }
+        media = media/3;
+        printf("Media: %.2f\n\n", media);
+    }
+
+    return 0;
+}
