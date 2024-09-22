@@ -1,0 +1,32 @@
+//Crie um programa que cadastre os dados de uma pessoa (nome, idade e altura)
+// e depois exiba esses dados.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct dadosPessoais {
+    char nome[50];
+    int idade;
+    float altura;
+}dadosPessoais;
+
+int main () {
+    dadosPessoais a;
+
+    printf("Digite o Nome da pessoa -> ");
+    fgets(a.nome, 50,  stdin);
+
+    printf("Digite sua idade -> ");
+    scanf("%d", &a.idade);
+
+    printf("Digite sua altura -> ");
+    scanf("%f", &a.altura);
+
+    printf("\n====== Dados Pessoais =======\n");
+    printf("    Nome:  %s", a.nome);
+    printf("    Idade:  %d\n", a.idade);
+    printf("    Altura:  %.2f metros\n", a.altura);
+    printf("=============================\n");
+
+    return 0;
+}
