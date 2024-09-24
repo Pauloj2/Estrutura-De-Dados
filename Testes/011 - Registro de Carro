@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct tdcarro{
+    char marca[50];
+    char modelo[50];
+    int ano;
+}tdcarro;
+
+int main () {
+    tdcarro carros[4];
+    int i;
+    int antigo = 2025;
+
+    for(i=0; i<4; i++){
+        printf("Digite a marca do carro: ");
+        getchar();
+        fgets(carros[i].marca, 50, stdin);
+
+        printf("Digite o modelo do carro: ");
+        getchar();
+        fgets(carros[i].modelo, 50, stdin);
+
+        printf("Digite o ano do carro: ");
+        scanf("%d", &carros[i].ano);
+        printf("\n");
+        if(carros[i].ano < antigo){
+            antigo = carros[i].ano;
+        }
+    }
+    for(i=0; i<4; i++){
+        if(carros[i].ano == antigo){
+            printf("\n=== Carro mais antigo ===\n");
+            printf("Marca: %s", carros[i].marca);
+            printf("Modelo: %s", carros[i].modelo);
+            printf("Ano: %d\n", carros[i].ano);
+        }
+    }
+
+    return 0;
+}
