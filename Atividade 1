@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define MAX_CLIENTS 50
+
+typedef struct {
+    int dia;
+    int mes;
+    int ano;
+} Data;
+
+void lerData(Data *data) {
+    printf("Digite a data de nascimento:\n");
+    printf("Dia: ");
+    scanf("%d", &data->dia);
+    printf("Mes: ");
+    scanf("%d", &data->mes);
+    printf("Ano: ");
+    scanf("%d", &data->ano);
+}
+
+int calcularIdade(Data data) {
+    time_t t;
+    struct tm tempoAtual;
+
+    time(&t);
+    tempoAtual = *localtime(&t);
+
+    int diaAtual = tempoAtual.tm_mday;
+    int mesAtual = tempoAtual.tm_mon + 1;
+    int anoAtual = tempoAtual.tm_year + 1900;
+
+    int idade = anoAtual - data.ano;
+
+    if (mesAtual < data.mes || (mesAtual == data.mes && diaAtual < data.dia)) {
+        idade--;
+    }
+
+    return idade;
+}
+
+typedef struct {
+    char nome[100];
+    char sexo;
+    Data dNasc;
+} Cliente;
+
+void cadastro(Cliente *cliente) {
+    printf("Nome do Cliente: ");
+    scanf("%s", cliente->nome);
+    printf("Sexo (M ou F): ");
+    scanf(" %c", &cliente->sexo);
+    lerData(&cliente->dNasc);
+}
+
+void listar(Cliente cliente) {
+    printf("Nome do Cliente: %s\n", cliente.nome);
+    printf("Sexo (M ou F): %c\n", cliente.sexo);
+    printf("Data de nascimento: %02d/%02d/%04d\n", cliente.dNasc.dia, cliente.dNasc.mes, cliente.dNasc.ano);
+    printf("Idade: %d anos\n", calcularIdade(cliente.dNasc));
+}
+
+int main() {
+    Cliente clientes[MAX_CLIENTS];
+    int contador = 0;
+    int opcao;
+
+    do {
+        printf("\nMENU\n");
+        printf("1. Cadastrar Cliente\n");
+        printf("2. Listar Clientes\n");
+        printf("3. Sair\n");
+        printf("Escolha uma opcao: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                if (contador >= MAX_CLIENTS) {
+                    printf("Capacidade Máxima de cadastros atingida!\n");
+                } else {
+                    cadastro(&clientes[contador]);
+                    contador++;
+                }
+                break;
+
+            case 2:
+                if (contador == 0) {
+                    printf("Não há clientes cadastrados!\n");
+                } else {
+                    for (int i = 0; i < contador; i++) {
+                        printf("\nCliente %d:\n", i + 1);
+                        listar(clientes[i]);
+                    }
+                }
+                break;
+
+            case 3:
+                printf("Programa Finalizado.\n");
+                break;
+
+            default:
+                printf("Opcao invalida! Tente novamente.\n");
+                break;
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
