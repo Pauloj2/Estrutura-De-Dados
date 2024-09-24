@@ -1,0 +1,110 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LIVROS 10
+
+typedef struct {
+    char titulo[100];
+    char autor[100];
+    int numeroPaginas;
+} Livro;
+
+typedef struct {
+    Livro livros[MAX_LIVROS];
+    int quantidade;
+} Biblioteca;
+
+void lerLivro(Livro *livro) {
+    printf("Titulo do livro: ");
+    scanf(" %[^\n]", livro->titulo);
+    printf("Autor do livro: ");
+    scanf(" %[^\n]", livro->autor);
+    printf("Numero de paginas: ");
+    while (scanf("%d", &livro->numeroPaginas) != 1) {
+        printf("Entrada invalida. Por favor, digite um numero: ");
+        while(getchar() != '\n'); // Limpa o buffer
+    }
+}
+
+void imprimirLivro(Livro livro) {
+    printf("Titulo: %s\n", livro.titulo);
+    printf("Autor: %s\n", livro.autor);
+    printf("Numero de Paginas: %d\n", livro.numeroPaginas);
+}
+
+void adicionarLivro(Biblioteca *biblioteca) {
+    if (biblioteca->quantidade >= MAX_LIVROS) {
+        printf("Capacidade maxima de livros atingida\n");
+    } else {
+        lerLivro(&biblioteca->livros[biblioteca->quantidade]);
+        biblioteca->quantidade++;
+    }
+}
+
+void imprimirBiblioteca(Biblioteca biblioteca) {
+    if (biblioteca.quantidade == 0) {
+        printf("Não ha livros cadastrados na biblioteca\n");
+    } else {
+        for (int i = 0; i < biblioteca.quantidade; i++) {
+            printf("\nLivro %d:\n", i + 1);
+            imprimirLivro(biblioteca.livros[i]);
+        }
+    }
+}
+
+Livro livroComMaisPaginas(Biblioteca biblioteca) {
+    Livro *livroMaior = &biblioteca.livros[0];
+    for (int i = 1; i < biblioteca.quantidade; i++) {
+        if (biblioteca.livros[i].numeroPaginas > livroMaior->numeroPaginas) {
+            livroMaior = &biblioteca.livros[i];
+        }
+    }
+    return *livroMaior;
+}
+
+int main() {
+    Biblioteca biblioteca;
+    biblioteca.quantidade = 0;
+
+    int opcao;
+
+    do {
+        printf("\nMENU\n");
+        printf("1. Adicionar Livro\n");
+        printf("2. Imprimir Todos os Livros\n");
+        printf("3. Imprimir Livro com Mais Paginas\n");
+        printf("4. Sair\n");
+        printf("Escolha um numero: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                adicionarLivro(&biblioteca);
+                break;
+
+            case 2:
+                imprimirBiblioteca(biblioteca);
+                break;
+
+            case 3:
+                if (biblioteca.quantidade == 0) {
+                    printf("Nao ha livros cadastrados na biblioteca!\n");
+                } else {
+                    Livro livroMaior = livroComMaisPaginas(biblioteca);
+                    printf("Livro com mais paginas:\n");
+                    imprimirLivro(livroMaior);
+                }
+                break;
+
+            case 4:
+                printf("Saindo...\n");
+                break;
+
+            default:
+                printf("Escolha invalida!\n");
+                break;
+        }
+    } while (opcao != 4);
+
+    return 0;
+}
