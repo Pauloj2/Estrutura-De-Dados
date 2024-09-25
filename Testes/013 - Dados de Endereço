@@ -1,0 +1,36 @@
+
+//Crie um programa que cadastre o endereço de uma pessoa
+//(rua, número, cidade, estado) e imprima esses dados.
+#include <stdio.h>
+#include <string.h>
+
+typedef struct Tdendereco{
+    char rua[50];
+    int numero;
+    char cidade[50];
+    char estado[3];
+}Tdendereco;
+
+int main () {
+    Tdendereco endereco;
+
+    printf("Digite o nome da rua: ");
+    fflush(stdin);
+    fgets(endereco.rua, 50, stdin);
+
+    printf("Digite o numero: ");
+    scanf("%d", &endereco.numero);
+
+    printf("Digite o nome da cidade: ");
+    fflush(stdin);
+    fgets(endereco.cidade, 50, stdin);
+
+    printf("Digite a sigla do estado: ");
+    fflush(stdin);
+    fgets(endereco.estado, 3, stdin);
+
+    printf("\nEndereco:\n");
+    printf("Rua: %s, Numero: %d\n", endereco.rua, endereco.numero);
+    printf(" Cidade: %s - Estado: %s\n", endereco.cidade, endereco.estado);
+
+}
