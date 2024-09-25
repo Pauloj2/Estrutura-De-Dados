@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+typedef struct Tdfuncionario{
+    char nome[50];
+    float horaEntrada;
+    float horaSaida;
+}Tdfuncionario;
+
+int main () {
+
+    Tdfuncionario funcionario;
+    float horast;
+
+    printf("Digite o nome do funcionario: ");
+    fgets(funcionario.nome, 50, stdin);
+
+    printf("Digite a hora de entrada: ");
+    scanf("%f", &funcionario.horaEntrada);
+
+    printf("Digite a hora de saida: ");
+    scanf("%f", &funcionario.horaSaida);
+
+    horast = funcionario.horaSaida - funcionario.horaEntrada;
+
+    printf("\n=== Dados do funcionario ===\n");
+    printf("Nome: %s", funcionario.nome);
+    printf("Hora de entrada: %.2f\n", funcionario.horaEntrada);
+    printf("Hora de saida: %.2f\n", funcionario.horaSaida);
+    printf("Horas Trabalhadas: %.2f\n", horast);
+
+    return 0;
+}
