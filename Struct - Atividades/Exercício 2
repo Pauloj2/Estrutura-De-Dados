@@ -1,0 +1,135 @@
+#include <stdio.h>
+
+struct Conjunto {
+    int elementos[20];
+    int tam;
+};
+
+void Criar_conj(struct Conjunto *conj) {
+    conj->tam = 0;
+}
+
+
+void Ler(struct Conjunto *conj) {
+    int n;
+    printf("Quantos elementos deseja inserir no conjunto? (Máximo 20): ");
+    scanf("%d", &n);
+
+    if (n > 20) {
+        printf("O conjunto pode conter no máximo 20 elementos.\n");
+        return;
+    }
+    conj->tam = n;
+    printf("Digite os %d elementos do conjunto: \n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &conj->elementos[i]);
+    }
+}
+
+struct Conjunto Uniao(struct Conjunto *A, struct Conjunto *B) {
+    struct Conjunto uniao;
+    Criar_conj(&uniao);
+
+
+    for (int i = 0; i < A->tam; i++) {
+        uniao.elementos[uniao.tam] = A->elementos[i];
+        uniao.tam++;
+    }
+
+    for (int i = 0; i < B->tam; i++) {
+        int encontrado = 0;
+        for (int j = 0; j < A->tam; j++) {
+            if (B->elementos[i] == A->elementos[j]) {
+                encontrado = 1;
+                break;
+            }
+        }
+        if (!encontrado) {
+            uniao.elementos[uniao.tam] = B->elementos[i];
+            uniao.tam++;
+        }
+    }
+
+    return uniao;
+}
+
+struct Conjunto Intersecao(struct Conjunto *A, struct Conjunto *B) {
+    struct Conjunto intersecao;
+    Criar_conj(&intersecao);
+
+    for (int i = 0; i < A->tam; i++) {
+        for (int j = 0; j < B->tam; j++) {
+            if (A->elementos[i] == B->elementos[j]) {
+                intersecao.elementos[intersecao.tam] = A->elementos[i];
+                intersecao.tam++;
+                break;
+            }
+        }
+    }
+
+    return intersecao;
+}
+
+void Impressao(struct Conjunto *conj) {
+    printf("{ ");
+    for (int i = 0; i < conj->tam; i++) {
+        printf("%d", conj->elementos[i]);
+        if (i < conj->tam - 1) {
+            printf(", ");
+        }
+    }
+    printf(" }\n");
+}
+
+int main() {
+    struct Conjunto A, B, uniao, intersecao;
+    int opcao;
+
+    do {
+        printf("\n=== MENU ===\n");
+        printf("1. Criar conjunto A\n");
+        printf("2. Criar conjunto B\n");
+        printf("3. Fazer uniao de A e B\n");
+        printf("4. Fazer intersecao de A e B\n");
+        printf("5. Imprimir conjunto A\n");
+        printf("6. Imprimir conjunto B\n");
+        printf("7. Sair\n");
+
+        printf("Escolha um numero: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                Ler(&A);
+                break;
+            case 2:
+                Ler(&B);
+                break;
+            case 3:
+                uniao = Uniao(&A, &B);
+                printf("União dos conjuntos A e B: ");
+                Impressao(&uniao);
+                break;
+            case 4:
+                intersecao = Intersecao(&A, &B);
+                printf("Interseção dos conjuntos A e B: ");
+                Impressao(&intersecao);
+                break;
+            case 5:
+                printf("Conjunto A: ");
+                Impressao(&A);
+                break;
+            case 6:
+                printf("Conjunto B: ");
+                Impressao(&B);
+                break;
+            case 7:
+                printf("Encerrado\n");
+                break;
+            default:
+                printf("Opção inválida!\n");
+        }
+    } while (opcao != 7);
+
+    return 0;
+}
