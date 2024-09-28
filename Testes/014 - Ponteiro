@@ -1,0 +1,25 @@
+//Crie um programa que declare uma variável do tipo int, um ponteiro para
+//essa variável e, em seguida, faça o ponteiro apontar para o
+//endereço da variável. Exiba o valor da variável usando o ponteiro.
+
+#include <stdio.h>
+
+int main () {
+
+    //criando uma varialvel int
+    int A = 10;
+    
+    printf("Valor da variavel: %d\n", A);
+    printf("O numero do endereco da varial A: %d\n", &A);
+    printf("===========================\n");
+
+    //criando um ponteiro
+    int *ponteiro;
+    
+    //ponteiro recebento o endereço da variavel "A"
+    ponteiro = &A;
+    printf("Valor da variavel usando o ponteiro: %d\n", *ponteiro);
+
+
+    return 0;
+}
