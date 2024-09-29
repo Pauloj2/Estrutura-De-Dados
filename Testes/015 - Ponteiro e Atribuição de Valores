@@ -1,0 +1,25 @@
+//2. Ponteiro e Atribuição de Valores
+//Crie um programa que declare uma variável inteira e um
+//ponteiro para essa variável. Atribua um novo valor à
+//variável através do ponteiro e, depois, exiba o novo
+//valor da variável.
+#include <stdio.h>
+
+int main () {
+
+    int A = 10;
+    int *ponteiro;
+
+    printf("Valor de A antes de fazer a troca: %d\n", A);
+    printf("======================================\n");
+    //O ponteiro recebeu o endereço de memoria da variavel A;
+    ponteiro = &A;
+
+    //Trocando o valor no endereco recebido pela variavel;
+    *ponteiro = 20;
+
+    //Agora a variavel A recebeu o valor trocado
+    printf("Valor de A atribuito pelo ponteiro: %d\n", A);
+
+    return 0;
+}
