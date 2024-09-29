@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main() {
+
+    setlocale(LC_ALL, "");
+
+    float vet[10];
+    int i;
+
+    for(i=0; i<10; i++){
+        printf("Endereço da posiçao %d: %d\n", i+1, &vet[i]);
+    }
+
+    return 0;
+}
