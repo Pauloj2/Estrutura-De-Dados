@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+
+    int A, B;
+
+    printf("Digite dois valores: ");
+    scanf("%d %d", &A, &B);
+
+    printf("=========================================\n");
+    printf("Valor de A: %d, Endereco da variavel A: %d\n", A, &A);
+    printf("Valor de B: %d, Endereco da variavel B: %d\n", B, &B);
+    printf("=========================================\n\n");
+
+    if(&A > &B){
+        printf("Conteudo do maior endereco: %d\n", A);
+    }else{
+        printf("Conteudo do maior endereco: %d\n", B);
+    }
+
+    return 0;
+}
