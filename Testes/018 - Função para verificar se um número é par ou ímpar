@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <locale.h>
+
+//2. Função para verificar se um número é par ou ímpar
+//Crie uma função chamada ehPar que recebe um número inteiro e retorna 1 se o número for par, e 0 se for ímpar.
+
+int ehPar(int num){
+
+    return num % 2 == 0;
+}
+
+int main() {
+    setlocale(LC_ALL, "");
+
+    int a;
+    scanf("%d", &a);
+
+    if(ehPar(a)){
+        printf("O número %d é Par.\n", a);
+    }else{
+        printf("O número %d é impar.\n", a);
+    }
+    return 0;
+}
