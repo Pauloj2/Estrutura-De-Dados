@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <locale.h>
+
+//1. Função para somar dois números
+//Crie uma função chamada somar que recebe dois inteiros como parâmetros e retorna a soma deles.
+
+int somar(int x, int y){
+    int soma = 0;
+
+    soma = x + y;
+
+    return soma;
+}
+
+int main () {
+
+    setlocale(LC_ALL, "");
+
+    int a, b, s = 0;
+
+    scanf("%d %d", &a, &b);
+
+    s = somar(a, b);
+
+    printf("O resultado da soma é: %d\n", s);
+    return 0;
+}
