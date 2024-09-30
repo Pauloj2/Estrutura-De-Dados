@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <locale.h>
+
+//3. Ponteiros e Aritmética de Ponteiros
+//Crie um programa que declare um array de inteiros e um ponteiro.
+//Use o ponteiro para percorrer o array e exibir todos os elementos.
+
+int main() {
+
+    setlocale(LC_ALL, "");
+
+    int vet[] = {10, 20, 30, 40, 50};
+    int *ponteiro = vet;
+    int i;
+
+    for(i=0; i<5; i++){
+        printf("Elemento da posição %d: %d\n", i+1, *(ponteiro + i));
+    }
+
+    return 0;
+}
