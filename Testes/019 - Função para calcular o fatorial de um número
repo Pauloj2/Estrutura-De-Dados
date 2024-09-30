@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <locale.h>
+
+//3. Função para calcular o fatorial de um número
+//Escreva uma função chamada fatorial que recebe um número inteiro positivo e retorna o fatorial desse número.
+
+int fatorial(int num){
+    int resul = 1;
+    for(int i=1; i<=num; i++){
+        resul = resul * i;
+    }
+    return resul;
+}
+
+int main () {
+    int numero;
+    setlocale(LC_ALL, "");
+
+    printf("Digite um número: ");
+    scanf("%d", &numero);
+
+    if(numero < 0){
+        printf("O número tem que ser positivo \n");
+    }else{
+        printf("O fatorial do número %d é: %d\n", numero, fatorial(numero));
+    }
+
+    return 0;
+}
