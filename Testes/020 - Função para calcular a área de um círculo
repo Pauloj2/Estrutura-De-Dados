@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+//4. Função para calcular a área de um círculo
+//Crie uma função chamada calcularAreaCirculo que recebe o raio de um círculo e retorna a área.
+// Utilize a fórmula: área = π * raio². Considere o valor de π como 3.14159.
+
+double calcularAreaCirculo(double raio){
+    double resul = 3.14159 * (raio * raio);
+
+    return resul;
+}
+
+int main() {
+    double num;
+
+    printf("Digite o raio do circulo: ");
+    scanf("%lf", &num);
+
+    printf("A area do circulo e: %.2lf\n", calcularAreaCirculo(num));
+
+    return 0;
+}
