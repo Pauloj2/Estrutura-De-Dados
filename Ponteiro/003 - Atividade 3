@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+//3. Escreva uma função que dado um número real passado como parâmetro,
+//retorne a parte inteira e a parte fracionária deste número. Escreva um programa que chama esta função.
+
+void inteiraFracionaria(double num){
+    int inteira = num;
+    printf("\n========================================");
+    printf("\nParte inteira do numero digitado: %d\n", inteira);
+    printf("Parte fracionaria do numero: %.6f\n", num - inteira);
+    printf("========================================\n");
+}
+
+int main () {
+    float numero;
+
+    printf("Digite um numero: ");
+    scanf("%f", &numero);
+
+     inteiraFracionaria(numero);
+
+    return 0;
+}
