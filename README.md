@@ -10,8 +10,8 @@ _*Lista de conceitos abortados neste repositório*_
 
 - [x] Struct
 - [x] Ponteiro
-- [ ] Lista Encadeadas Simples
-- [ ] Pilha
-- [ ] Fila
+- [x] Lista Encadeadas Simples
+- [x] Pilha
+- [x] Fila
 
 As estruturas de dados são apresentadas de forma modular, com exemplos e testes, permitindo fácil entendimento e reutilização.
